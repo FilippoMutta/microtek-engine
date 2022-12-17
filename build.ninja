@@ -1,0 +1,11 @@
+cflags = -Wall -lSDL2
+
+rule cpp
+  command = g++ $cflags -c $in -o $out
+
+rule ln
+  command = g++ $cflags $in -o $out
+
+build build/main.o: cpp src/main.cpp
+build build/game.o: cpp src/game/game.cpp
+build game: ln build/main.o build/game.o
